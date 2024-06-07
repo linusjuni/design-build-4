@@ -15,7 +15,7 @@ app.get("/api", (req, res) => {
 
 // All other GET requests not handled before will return the React app
 app.get('*', (req, res) => {
-  res.sendFile(path.join(path.resolve(__dirname, 'client', 'build', 'index.html')));
+  res.sendFile(path.join(path.resolve(__dirname, 'src', 'client', 'build', 'index.html')));
 });
 
 app.listen(PORT, () => {
