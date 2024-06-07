@@ -5,17 +5,17 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-// Serve static assets (built frontend)
+// Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-// API endpoint
-app.get('/api', (req, res) => {
-    res.json({ message: "Hello from server! - 1" });
+// Handle GET requests to /api route
+app.get("/api", (req, res) => {
+  res.json({ message: "Hello from server!" });
 });
 
-// Serve the frontend for any other route
+// All other GET requests not handled before will return the React app
 app.get('*', (req, res) => {
-    res.sendFile(express.static(path.resolve(__dirname, '../client/build', 'index.html')));
+  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 app.listen(PORT, () => {
