@@ -12,7 +12,7 @@ app.get('/api', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.json({ message: "Hello from server! - 2" });
+    res.sendFile(path.resolve(__dirname, '../client/build'));
 });
 
 app.listen(PORT, () => {
