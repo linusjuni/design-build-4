@@ -15,13 +15,8 @@ app.get("/api", (req, res) => {
 
 // All other GET requests not handled before will return the React app
 app.get('*', (req, res) => {
-    try {
-      res.sendFile(path.join(process.cwd(), '..', 'client', 'build', 'index.html'));
-    } catch (error) {
-      console.error("Error serving index.html:", error);
-      res.status(500).send("Internal Server Error");
-    }
-  });
+  res.sendFile(path.join(process.cwd(), 'client', 'build', 'index.html'));
+});
 
 app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
